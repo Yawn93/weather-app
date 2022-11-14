@@ -1,0 +1,90 @@
+body {
+  background-color: #f5f9fc;
+}
+
+.container {
+  background-color: #d9edfd;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #006ec5;
+}
+
+form {
+  margin: 30px;
+}
+
+.btn {
+  background-color: #006ec5;
+  padding: 10px;
+}
+
+.form-control {
+  padding: 10px;
+  border: none;
+}
+
+.cloudy {
+  max-width: 100px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.cloudysmaller {
+  max-width: 70px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.sneaky {
+  font-size: 40px;
+  color: #006ec5;
+  font-weight: bolder;
+  margin-top: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.temperature {
+  font-size: 50px;
+  color: #006ec5;
+  font-weight: bolder;
+  margin-top: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.date {
+  font-weight: bolder;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h5 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.biggertemp {
+  font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+  color: #006ec5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.smallertemp {
+  font-size: 16px;
+  margin-bottom: 0px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
