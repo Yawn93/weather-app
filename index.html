@@ -1,17 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      h1 {
-        text-align: center;
-      }
-    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/index.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
-    <h1>Hello GitHub</h1>
+    <div class="container">
+      <h1>How's the weather in</h1>
+      <form id="search-form">
+        <div class="row">
+          <div class="col-10">
+            <input
+              type="search"
+              placeholder="Lisbon"
+              class="form-control search-input"
+              id="city-input"
+            />
+          </div>
+          <div class="col-2">
+            <input type="submit" class="btn btn-primary w-100" value="Go!" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container" style="background-color: white;">
+      <div class="row">
+        <div class="col-6">
+          <h2 id="city">Lisbon</h2>
+          <p class="date">Monday, 15 Sep, 15:00</p>
+          <p>
+            Humidity: 12%
+            <br />
+            Precipitation: 0%
+          </p>
+        </div>
+        <div class="col-4">
+          <p class="sneaky">
+            Sneaky Sun
+            <br />
+            <div id="temperature" class="sneaky">14ºC</div>
+          </p>
+        </div>
+        <div class="col-2">
+          <img src="cloudy.png" class="cloudy" />
+        </div>
+      </div>
+    </div>
+    <div class="container" style="background-color: white;">
+      <div class="row">
+        <div class="col">
+          <h5>Today</h5>
+          <img src="cloudy.png" class="cloudysmaller" />
+          <p class="smallertemp">max</p>
+          <p class="biggertemp"><strong>15ºC</strong></p>
+          <p class="smallertemp">min</p>
+          <p class="biggertemp">9ºC</p>
+        </div>
+        <div class="col">
+          <h5>Tomorrow</h5>
+          <img src="cloudy.png" class="cloudysmaller" />
+          <p class="smallertemp">max</p>
+          <p class="biggertemp"><strong>14ºC</strong></p>
+          <p class="smallertemp">min</p>
+          <p class="biggertemp">10ºC</p>
+        </div>
+        <div class="col">
+          <h5>Wednesday</h5>
+          <img src="cloudy.png" class="cloudysmaller" />
+          <p class="smallertemp">max</p>
+          <p class="biggertemp"><strong>16ºC</strong></p>
+          <p class="smallertemp">min</p>
+          <p class="biggertemp">10ºC</p>
+        </div>
+        <div class="col">
+          <h5>Thursday</h5>
+          <img src="cloudy.png" class="cloudysmaller" />
+          <p class="smallertemp">max</p>
+          <p class="biggertemp"><strong>22ºC</strong></p>
+          <p class="smallertemp">min</p>
+          <p class="biggertemp">12ºC</p>
+        </div>
+        <div class="col">
+          <h5>Friday</h5>
+          <img src="cloudy.png" class="cloudysmaller" />
+          <p class="smallertemp">max</p>
+          <p class="biggertemp"><strong>23ºC</strong></p>
+          <p class="smallertemp">min</p>
+          <p class="biggertemp">12ºC</p>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
