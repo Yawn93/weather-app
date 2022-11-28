@@ -34,8 +34,14 @@ humidityElement.innerHTML = response.data.main.humidity;
 let windElement = document.querySelector("#wind");
 windElement.innerHTML = Math.round(response.data.wind.speed);
 
+let iconElement = document.querySelector("#icon");
+iconElement.setAttribute(
+  "src",
+  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+);
+
 let apiKey = "a9cbe15c4bc17314f8d7985a3c6af64c";
-let city = "Lisbon";
+let city = "MLisbon";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
