@@ -22,39 +22,29 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-let dateElement = document.querySelector("#date");
-dateElement.innerHTML = formatDate(response.data.dt * 1000);
-
-let descriptionElement = document.querySelector("#description");
-descriptionElement.innerHTML = response.data.weather[0].description;
-
-let humidtyElement = document.querySelector("#humidity");
-humidityElement.innerHTML = response.data.main.humidity;
-
-let windElement = document.querySelector("#wind");
-windElement.innerHTML = Math.round(response.data.wind.speed);
-
-let iconElement = document.querySelector("#icon");
-iconElement.setAttribute(
-  "src",
-  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-);
-
-let apiKey = "a9cbe15c4bc17314f8d7985a3c6af64c";
-let city = "MLisbon";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showTemperature);
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
+  let dateElement = document.querySelector("#date");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let iconElement = document.querySelector("#icon");
+  let cityElement = document.querySelector("#city");
+
   temperatureElement.innerHTML = `${temperature} ºC`;
-}
-function onInit() {
-  let searchForm = document.querySelector("#search-form");
-  searchForm.addEventListener("submit", handleSubmit);
+  cityElement.innerHTML = response.data.name;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
-function searchCity(city) {
+function search(city) {
   let apiKey = "a9cbe15c4bc17314f8d7985a3c6af64c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
@@ -62,13 +52,11 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  city = document.querySelector("#city-input").value;
-  searchCity(city);
-  let h2 = document.querySelector("#city");
-  h2.innerHTML = `${city}`;
+  let cityInputElement = document.querySelector("#city-input").value;
+  search(cityInputElement.value);
 }
 
-onInit();
-searchCity();
-handleSubmit();
-formatDate();
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+search("Lisbon");
