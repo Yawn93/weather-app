@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-  let date = newDate(timestamp);
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -23,7 +23,6 @@ function formatDate(timestamp) {
 }
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   let dateElement = document.querySelector("#date");
   let descriptionElement = document.querySelector("#description");
@@ -32,7 +31,9 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
   let cityElement = document.querySelector("#city");
 
-  temperatureElement.innerHTML = `${temperature} ºC`;
+  celsiusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -45,7 +46,7 @@ function showTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "a9cbe15c4bc17314f8d7985a3c6af64c";
+  let apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
@@ -53,10 +54,36 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input").value;
-  search(cityInputElement.value);
+  search(cityInputElement);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Lisbon");
