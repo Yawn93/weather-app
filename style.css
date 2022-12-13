@@ -13,7 +13,7 @@ body {
 h1 {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: bolder;
   color: #006ec5;
 }
 
@@ -101,4 +101,24 @@ h5 {
 
 a {
   color: #006ec5;
+}
+
+.weather-forecast {
+  margin-top: 50px;
+  text-align: center;
+  color: #000;
+}
+
+.weather-forecast-date {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #006ec5;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+}
+
+.weather-forecast-temperatures {
+  font-size: 16px;
 }
